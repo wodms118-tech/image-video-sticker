@@ -1,0 +1,21 @@
+{
+  "packs": [
+    {
+      "name": "베이직",
+      "items": [
+        "stickers/basic/heart.png",
+        "stickers/basic/sparkle.png",
+        "stickers/basic/flower.png",
+        "stickers/basic/ribbon.png",
+        "stickers/basic/cherry.png",
+        "stickers/basic/rainbow.png",
+        "stickers/basic/bubble.png",
+        "stickers/basic/crown.png",
+        "stickers/basic/peach.png",
+        "stickers/basic/bolt.png",
+        "stickers/basic/star.png",
+        "stickers/basic/cloud.png"
+      ]
+    }
+  ]
+}
