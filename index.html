@@ -3,184 +3,197 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#F6F3F9">
-<title>반반데코 · 반반 프레임 꾸미기</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎀</text></svg>">
+<meta name="theme-color" content="#F2ECDF">
+<title>투컷 · TWO CUT</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23F2ECDF' stroke='%23262019' stroke-width='3'/><text x='50' y='66' font-size='42' text-anchor='middle' font-family='Georgia,serif' fill='%23262019'>투</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
 :root{
-  --paper:#F6F3F9;      /* 연보라빛 종이 */
-  --ink:#3D2F42;        /* 자두빛 잉크 */
-  --pink:#FF6E9C;
-  --pink-deep:#E9548C;
-  --lemon:#FFCD42;
-  --sky:#7EC8E3;
+  --paper:#F2ECDF;      /* 웜 리넨 배경 */
+  --panel:#FBF9F3;      /* 카드/패널 warm white */
+  --ink:#262019;        /* 웜 블랙 잉크 */
+  --ink-60:rgba(38,32,25,.6);
+  --ink-35:rgba(38,32,25,.35);
+  --sand:#E5DAC4;       /* 보조 필/구분면 */
+  --clay:#A9714C;       /* 포인트 — 머스타드 클레이 */
+  --clay-deep:#8B5A38;
   --white:#FFFFFF;
-  --line:rgba(61,47,66,.12);
-  --shadow:0 3px 0 rgba(61,47,66,.16);
-  --r:16px;
+  --line:rgba(38,32,25,.16);
+  --shadow:none;
+  --r:3px;
+  --serif:"Gowun Batang",Georgia,serif;
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{height:100%}
 body{
   background:var(--paper);
-  background-image:radial-gradient(rgba(61,47,66,.05) 1.2px, transparent 1.2px);
-  background-size:22px 22px;
   color:var(--ink);
   font-family:"Pretendard Variable",Pretendard,-apple-system,sans-serif;
   overscroll-behavior-y:contain;
 }
 button{font-family:inherit;color:inherit;border:none;background:none;cursor:pointer}
 
-/* ── 스티커 룩: 이 앱의 모든 컨트롤은 다이컷 스티커처럼 생겼다 ── */
+/* ── 하드라인 부티크 룩: 모든 컨트롤은 얇은 테두리의 카탈로그 카드처럼 ── */
 .stk{
-  background:var(--white);
-  border:2.5px solid var(--white);
-  outline:2px solid var(--line);
-  border-radius:999px;
-  box-shadow:var(--shadow);
-  transition:transform .12s ease, box-shadow .12s ease;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  box-shadow:none;
+  transition:background-color .15s ease, border-color .15s ease, opacity .15s ease;
+  letter-spacing:.02em;
 }
-.stk:active{transform:translateY(2px) scale(.98);box-shadow:0 1px 0 rgba(61,47,66,.16)}
+.stk:active{background:var(--sand)}
 
-.wrap{max-width:520px;margin:0 auto;padding:14px 14px 110px}
+.wrap{max-width:520px;margin:0 auto;padding:22px 18px 112px}
 
 /* 헤더 */
-header{display:flex;align-items:center;justify-content:space-between;padding:6px 2px 14px}
+header{display:flex;align-items:flex-end;justify-content:space-between;padding:0 2px 16px;
+  border-bottom:1px solid var(--line);margin-bottom:20px}
 .logo{
-  display:inline-block;font-family:Jua,sans-serif;font-size:26px;line-height:1;
-  background:var(--white);padding:10px 16px 11px;border-radius:14px;
-  outline:2px solid var(--line);box-shadow:var(--shadow);
-  transform:rotate(-2deg);
+  display:inline-block;font-family:var(--serif);font-weight:700;font-size:24px;line-height:1;
+  letter-spacing:.01em;color:var(--ink);
 }
-.logo b{color:var(--pink)}
-.tagline{font-size:12px;color:rgba(61,47,66,.55);text-align:right;line-height:1.5}
+.logo b{font-weight:700;color:var(--clay)}
+.tagline{font-size:10.5px;color:var(--ink-60);text-align:right;line-height:1.7;
+  letter-spacing:.14em;text-transform:uppercase}
 
 /* 인앱 브라우저 배너 */
-#inappBanner{display:none;background:var(--lemon);border-radius:var(--r);padding:12px 14px;font-size:13px;
-  line-height:1.55;margin-bottom:12px;outline:2px solid var(--line);box-shadow:var(--shadow)}
-#inappBanner b{display:block;margin-bottom:2px}
+#inappBanner{display:none;background:var(--panel);border:1px solid var(--clay);border-radius:var(--r);padding:12px 14px;font-size:13px;
+  line-height:1.55;margin-bottom:16px}
+#inappBanner b{display:block;margin-bottom:2px;font-family:var(--serif)}
 
-/* 비율 칩 */
-.ratios{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
-.ratio-chip{font-size:14px;font-weight:700;padding:9px 15px}
-.ratio-chip:nth-child(odd){transform:rotate(-1.6deg)}
-.ratio-chip:nth-child(even){transform:rotate(1.4deg)}
-.ratio-chip.on{background:var(--pink);color:#fff;outline-color:var(--pink-deep)}
-.ratio-chip.on:nth-child(odd),.ratio-chip.on:nth-child(even){transform:rotate(0) scale(1.05)}
+/* 비율 칩 — 언더라인 셀렉트 */
+.ratios{display:flex;gap:4px;justify-content:center;flex-wrap:wrap;margin-bottom:22px;
+  border-bottom:1px solid var(--line);padding-bottom:0}
+.ratio-chip{font-size:12px;font-weight:600;padding:9px 14px 10px;letter-spacing:.06em;
+  background:none;border:none;border-bottom:1.5px solid transparent;border-radius:0;color:var(--ink-60)}
+.ratio-chip:active{background:none}
+.ratio-chip.on{color:var(--ink);border-bottom-color:var(--clay);font-weight:700}
 
 /* 캔버스 */
-.stage-outer{display:flex;justify-content:center}
-.stage{position:relative;border-radius:20px;overflow:hidden;background:#fff;
-  outline:2px solid var(--line);box-shadow:0 6px 0 rgba(61,47,66,.14)}
+.stage-outer{display:flex;justify-content:center;position:relative;padding:16px}
+.stage-outer::before{content:"";position:absolute;top:0;left:0;width:22px;height:22px;
+  border-top:1.5px solid var(--clay);border-left:1.5px solid var(--clay)}
+.stage-outer::after{content:"";position:absolute;bottom:0;right:0;width:22px;height:22px;
+  border-bottom:1.5px solid var(--clay);border-right:1.5px solid var(--clay)}
+.stage{position:relative;overflow:hidden;background:#fff;border:1px solid var(--line)}
 #cv{display:block;width:100%;height:100%;touch-action:none}
 .slot-ui{position:absolute;inset:0;pointer-events:none}
 .half{position:absolute;left:0;width:100%;height:50%;display:flex;align-items:center;justify-content:center}
 .half.top{top:0}.half.bottom{top:50%}
-.add-btn{pointer-events:auto;font-family:Jua,sans-serif;font-size:15px;padding:11px 18px;color:var(--ink)}
-.add-btn span{color:var(--pink);margin-right:5px}
+.add-btn{pointer-events:auto;font-family:var(--serif);font-size:14px;padding:11px 20px;color:var(--ink);
+  background:rgba(251,249,243,.9);border:1px solid var(--line)}
+.add-btn span{color:var(--clay);margin-right:6px;font-family:"Pretendard Variable",sans-serif}
 .mini-tools{position:absolute;right:8px;display:none;gap:6px;pointer-events:auto}
 .half.top .mini-tools{top:8px}
 .half.bottom .mini-tools{bottom:8px}
-.mini-btn{width:34px;height:34px;border-radius:50%;font-size:15px;display:flex;align-items:center;justify-content:center}
+.mini-btn{width:32px;height:32px;border-radius:0;font-size:13px;display:flex;align-items:center;justify-content:center;
+  background:rgba(251,249,243,.92);border:1px solid var(--line)}
 .half.filled .add-btn{display:none}
 .half.filled .mini-tools{display:flex}
-.hint{text-align:center;font-size:12px;color:rgba(61,47,66,.5);margin-top:10px;line-height:1.6}
+.hint{text-align:center;font-size:11px;color:var(--ink-35);margin-top:14px;line-height:1.8;letter-spacing:.03em}
 
 /* 영상 설정 패널 */
-#videoPanel{display:none;margin-top:16px;background:var(--white);border-radius:var(--r);
-  outline:2px solid var(--line);box-shadow:var(--shadow);padding:16px}
-#videoPanel h3{font-family:Jua,sans-serif;font-size:16px;margin-bottom:12px}
-.trim-row{margin-bottom:16px}
+#videoPanel{display:none;margin-top:18px;background:var(--panel);border-radius:0;
+  border:1px solid var(--line);box-shadow:none;padding:18px}
+#videoPanel h3{font-family:var(--serif);font-weight:700;font-size:15px;margin-bottom:14px;letter-spacing:.02em}
+.trim-row{margin-bottom:18px}
 .trim-row:last-of-type{margin-bottom:6px}
-.trim-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:13px}
-.trim-head .t-label{font-weight:700}
-.trim-head .t-time{color:rgba(61,47,66,.6);font-variant-numeric:tabular-nums}
-.trim-track{position:relative;height:30px;border-radius:999px;background:#EFEAF4;touch-action:none}
-.trim-fill{position:absolute;top:0;height:100%;background:linear-gradient(90deg,var(--pink),#FF9DBC);border-radius:999px;opacity:.85}
-.trim-handle{position:absolute;top:-3px;width:22px;height:36px;background:#fff;border-radius:9px;
-  outline:2px solid var(--line);box-shadow:var(--shadow);transform:translateX(-50%);cursor:ew-resize}
-.trim-handle::after{content:"";position:absolute;left:9px;top:11px;width:3px;height:14px;border-radius:2px;background:rgba(61,47,66,.25)}
-.trim-opts{display:flex;gap:6px;margin-top:8px}
-.opt-chip{font-size:12px;font-weight:600;padding:6px 11px;border-radius:999px;background:#EFEAF4;color:rgba(61,47,66,.65)}
-.opt-chip.on{background:var(--sky);color:#fff}
-.dur-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;border-top:1.5px dashed var(--line);padding-top:12px;margin-top:4px}
-.dur-row .d-label{font-size:13px;font-weight:700;margin-right:2px}
-.dur-chip{font-size:12px;font-weight:600;padding:6px 11px;border-radius:999px;background:#EFEAF4;color:rgba(61,47,66,.65)}
-.dur-chip.on{background:var(--lemon);color:var(--ink)}
-.mute-note{font-size:11.5px;color:rgba(61,47,66,.5);margin-top:10px;line-height:1.5}
+.trim-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px;font-size:12px}
+.trim-head .t-label{font-weight:700;letter-spacing:.04em}
+.trim-head .t-time{color:var(--ink-60);font-variant-numeric:tabular-nums}
+.trim-track{position:relative;height:24px;border-radius:0;background:var(--sand);touch-action:none}
+.trim-fill{position:absolute;top:0;height:100%;background:var(--clay);border-radius:0;opacity:.55}
+.trim-handle{position:absolute;top:-3px;width:18px;height:30px;background:var(--panel);border-radius:0;
+  border:1px solid var(--ink);box-shadow:none;transform:translateX(-50%);cursor:ew-resize}
+.trim-handle::after{content:"";position:absolute;left:7px;top:9px;width:2px;height:12px;background:var(--ink-35)}
+.trim-opts{display:flex;gap:6px;margin-top:9px}
+.opt-chip{font-size:11px;font-weight:600;padding:7px 12px;border-radius:0;background:none;border:1px solid var(--line);color:var(--ink-60);letter-spacing:.03em}
+.opt-chip.on{background:var(--ink);color:var(--panel);border-color:var(--ink)}
+.dur-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:14px;margin-top:6px}
+.dur-row .d-label{font-size:12px;font-weight:700;margin-right:4px;letter-spacing:.04em}
+.dur-chip{font-size:11px;font-weight:600;padding:7px 12px;border-radius:0;background:none;border:1px solid var(--line);color:var(--ink-60)}
+.dur-chip.on{background:var(--clay);color:#fff;border-color:var(--clay)}
+.mute-note{font-size:11px;color:var(--ink-35);margin-top:12px;line-height:1.6;letter-spacing:.02em}
 
 /* 하단 독 */
-.dock{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;gap:10px;
-  padding:12px 14px calc(14px + env(safe-area-inset-bottom));
-  background:linear-gradient(transparent, var(--paper) 40%)}
-.dock-btn{font-family:Jua,sans-serif;font-size:15px;padding:13px 18px;display:flex;align-items:center;gap:7px}
-.dock-btn .ico{font-size:17px}
-.dock-btn.primary{background:var(--pink);color:#fff;outline-color:var(--pink-deep)}
+.dock{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;gap:0;
+  padding:14px 18px calc(14px + env(safe-area-inset-bottom));
+  background:linear-gradient(transparent, var(--paper) 45%)}
+.dock-btn{font-family:"Pretendard Variable",sans-serif;font-size:12px;font-weight:600;padding:14px 20px;
+  display:flex;align-items:center;gap:6px;letter-spacing:.05em;border-radius:0;
+  border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);border-left:1px solid var(--ink)}
+.dock-btn:first-child{border-left:1px solid var(--ink)}
+.dock-btn:last-child{border-right:1px solid var(--ink)}
+.dock-btn .ico{font-size:13px;color:var(--clay)}
+.dock-btn.primary{background:var(--ink);color:var(--panel)}
+.dock-btn.primary .ico{color:var(--panel)}
 
 /* 바텀시트 (스티커 서랍) */
-.sheet-dim{position:fixed;inset:0;background:rgba(61,47,66,.35);opacity:0;pointer-events:none;transition:opacity .2s;z-index:40}
+.sheet-dim{position:fixed;inset:0;background:rgba(38,32,25,.4);opacity:0;pointer-events:none;transition:opacity .2s;z-index:40}
 .sheet-dim.on{opacity:1;pointer-events:auto}
-.sheet{position:fixed;left:0;right:0;bottom:0;z-index:41;background:var(--white);
-  border-radius:24px 24px 0 0;outline:2px solid var(--line);
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:41;background:var(--panel);
+  border-radius:0;border-top:1px solid var(--ink);
   transform:translateY(105%);transition:transform .25s ease;max-height:72vh;display:flex;flex-direction:column}
 .sheet.on{transform:translateY(0)}
-.sheet-grip{width:44px;height:5px;border-radius:3px;background:rgba(61,47,66,.18);margin:10px auto 4px}
-.sheet-head{display:flex;align-items:center;justify-content:space-between;padding:8px 18px 10px}
-.sheet-head h3{font-family:Jua,sans-serif;font-size:18px}
-.sheet-tabs{display:flex;gap:8px;padding:0 18px 12px}
-.sheet-tab{font-size:14px;font-weight:700;padding:8px 14px;border-radius:999px;background:#EFEAF4;color:rgba(61,47,66,.55)}
-.sheet-tab.on{background:var(--ink);color:#fff}
-.sheet-body{overflow-y:auto;padding:4px 18px calc(20px + env(safe-area-inset-bottom))}
+.sheet-grip{width:36px;height:2px;background:var(--ink-35);margin:14px auto 6px}
+.sheet-head{display:flex;align-items:center;justify-content:space-between;padding:6px 20px 14px}
+.sheet-head h3{font-family:var(--serif);font-weight:700;font-size:17px;letter-spacing:.02em}
+.sheet-tabs{display:flex;gap:20px;padding:0 20px 14px;border-bottom:1px solid var(--line)}
+.sheet-tab{font-size:13px;font-weight:600;padding:0 0 12px;background:none;border-radius:0;
+  border-bottom:1.5px solid transparent;color:var(--ink-35);letter-spacing:.03em}
+.sheet-tab.on{background:none;color:var(--ink);border-bottom-color:var(--clay);font-weight:700}
+.sheet-body{overflow-y:auto;padding:16px 20px calc(20px + env(safe-area-inset-bottom))}
 .stk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:10px}
-.stk-item{position:relative;aspect-ratio:1;background:#F6F3F9;border-radius:14px;padding:8px;border:2px solid transparent}
-.stk-item:active{border-color:var(--pink)}
+.stk-item{position:relative;aspect-ratio:1;background:var(--paper);border-radius:0;padding:8px;border:1px solid var(--line)}
+.stk-item:active{border-color:var(--clay)}
 .stk-item img{width:100%;height:100%;object-fit:contain;pointer-events:none}
-.stk-del{position:absolute;top:-6px;right:-6px;width:22px;height:22px;border-radius:50%;
-  background:var(--ink);color:#fff;font-size:12px;line-height:22px;text-align:center}
-.pack-name{font-family:Jua,sans-serif;font-size:14px;margin:14px 0 8px;color:rgba(61,47,66,.7)}
-.my-actions{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
-.my-actions .stk{font-size:13px;font-weight:700;padding:9px 14px}
-.my-actions .nukki-cta{background:var(--sky);color:#fff;outline-color:#5FAECB}
-.empty-note{font-size:13px;color:rgba(61,47,66,.5);text-align:center;padding:24px 10px;line-height:1.7}
+.stk-del{position:absolute;top:-7px;right:-7px;width:20px;height:20px;border-radius:0;
+  background:var(--ink);color:var(--panel);font-size:11px;line-height:20px;text-align:center}
+.pack-name{font-family:"Pretendard Variable",sans-serif;font-size:11px;font-weight:700;margin:18px 0 10px;
+  color:var(--ink-60);letter-spacing:.14em;text-transform:uppercase}
+.my-actions{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.my-actions .stk{font-size:12px;font-weight:600;padding:10px 14px;letter-spacing:.03em}
+.my-actions .nukki-cta{background:var(--ink);color:var(--panel);border-color:var(--ink)}
+.empty-note{font-size:12.5px;color:var(--ink-35);text-align:center;padding:28px 10px;line-height:1.8}
 
 /* 모달 (진행/결과) */
-.modal-dim{position:fixed;inset:0;background:rgba(61,47,66,.45);display:none;align-items:center;justify-content:center;z-index:60;padding:20px}
+.modal-dim{position:fixed;inset:0;background:rgba(38,32,25,.5);display:none;align-items:center;justify-content:center;z-index:60;padding:20px}
 .modal-dim.on{display:flex}
-.modal{background:var(--white);border-radius:20px;outline:2px solid var(--line);box-shadow:0 6px 0 rgba(61,47,66,.18);
-  width:100%;max-width:380px;padding:22px;text-align:center;max-height:86vh;overflow-y:auto}
-.modal h3{font-family:Jua,sans-serif;font-size:18px;margin-bottom:8px}
-.modal p{font-size:13px;line-height:1.65;color:rgba(61,47,66,.7)}
-.pbar{height:14px;border-radius:999px;background:#EFEAF4;margin:16px 0 8px;overflow:hidden}
-.pbar>div{height:100%;width:0%;background:linear-gradient(90deg,var(--pink),var(--lemon));border-radius:999px;transition:width .15s}
-.ptext{font-size:12px;color:rgba(61,47,66,.55);font-variant-numeric:tabular-nums}
-.modal .big-btns{display:flex;flex-direction:column;gap:10px;margin-top:16px}
-.modal .big-btn{font-family:Jua,sans-serif;font-size:16px;padding:14px;border-radius:14px}
-.modal .big-btn.pink{background:var(--pink);color:#fff;outline-color:var(--pink-deep)}
-.modal .big-btn:disabled{opacity:.4}
-.modal .sub-btn{font-size:13px;color:rgba(61,47,66,.5);margin-top:14px;text-decoration:underline}
-.result-media{max-width:100%;max-height:46vh;border-radius:14px;outline:2px solid var(--line);margin:14px 0 6px}
-.save-tip{font-size:12px;background:#FFF6DA;border-radius:10px;padding:10px;line-height:1.6;margin-top:10px}
+.modal{background:var(--panel);border-radius:0;border:1px solid var(--ink);box-shadow:none;
+  width:100%;max-width:380px;padding:26px 24px;text-align:center;max-height:86vh;overflow-y:auto}
+.modal h3{font-family:var(--serif);font-weight:700;font-size:19px;margin-bottom:10px;letter-spacing:.02em}
+.modal p{font-size:12.5px;line-height:1.7;color:var(--ink-60)}
+.pbar{height:2px;border-radius:0;background:var(--sand);margin:20px 0 10px;overflow:hidden}
+.pbar>div{height:100%;width:0%;background:var(--clay);border-radius:0;transition:width .15s}
+.ptext{font-size:11px;color:var(--ink-35);font-variant-numeric:tabular-nums;letter-spacing:.03em}
+.modal .big-btns{display:flex;flex-direction:column;gap:10px;margin-top:20px}
+.modal .big-btn{font-family:"Pretendard Variable",sans-serif;font-weight:700;font-size:14px;padding:15px;border-radius:0;letter-spacing:.03em}
+.modal .big-btn.pink{background:var(--ink);color:var(--panel);border-color:var(--ink)}
+.modal .big-btn:disabled{opacity:.35}
+.modal .sub-btn{font-size:12px;color:var(--ink-35);margin-top:16px;text-decoration:underline;letter-spacing:.02em}
+.result-media{max-width:100%;max-height:46vh;border-radius:0;border:1px solid var(--line);margin:16px 0 8px}
+.save-tip{font-size:11.5px;background:var(--sand);border-radius:0;padding:12px;line-height:1.65;margin-top:12px;letter-spacing:.01em}
 
 /* 토스트 */
-#toast{position:fixed;left:50%;bottom:100px;transform:translateX(-50%) translateY(20px);
-  background:var(--ink);color:#fff;font-size:13.5px;font-weight:600;padding:11px 18px;border-radius:999px;
-  opacity:0;pointer-events:none;transition:.25s;z-index:70;white-space:nowrap;box-shadow:0 4px 12px rgba(61,47,66,.3)}
+#toast{position:fixed;left:50%;bottom:104px;transform:translateX(-50%) translateY(20px);
+  background:var(--ink);color:var(--panel);font-size:12.5px;font-weight:600;padding:11px 20px;border-radius:0;
+  opacity:0;pointer-events:none;transition:.25s;z-index:70;white-space:nowrap;box-shadow:none;letter-spacing:.03em}
 #toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
-@media (min-width:600px){.tagline{font-size:13px}}
+@media (min-width:600px){.tagline{font-size:11px}}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div id="inappBanner"><b>📢 앱 안 브라우저에서 열렸어요</b>파일 저장이 막힐 수 있어요. 오른쪽 위 <b>⋯ 메뉴 → 다른 브라우저로 열기</b>(사파리/크롬)를 눌러주세요.</div>
+  <div id="inappBanner"><b>앱 안 브라우저에서 열렸어요</b>파일 저장이 막힐 수 있어요. 오른쪽 위 <b>⋯ 메뉴 → 다른 브라우저로 열기</b>(사파리/크롬)를 눌러주세요.</div>
 
   <header>
-    <span class="logo">반반<b>데코</b> 🎀</span>
-    <span class="tagline">사진·영상 반반 넣고<br>스티커로 꾸며 저장하기</span>
+    <span class="logo">투<b>컷</b></span>
+    <span class="tagline">Photo &amp; Video<br>Split Studio</span>
   </header>
 
   <div class="ratios" id="ratios"></div>
@@ -192,15 +205,15 @@ header{display:flex;align-items:center;justify-content:space-between;padding:6px
         <div class="half top" id="half0">
           <button class="add-btn stk" data-slot="0"><span>＋</span>사진·영상 넣기</button>
           <div class="mini-tools">
-            <button class="mini-btn stk" data-act="replace" data-slot="0" title="교체">🔄</button>
-            <button class="mini-btn stk" data-act="remove" data-slot="0" title="삭제">🗑️</button>
+            <button class="mini-btn stk" data-act="replace" data-slot="0" title="교체">⟳</button>
+            <button class="mini-btn stk" data-act="remove" data-slot="0" title="삭제">✕</button>
           </div>
         </div>
         <div class="half bottom" id="half1">
           <button class="add-btn stk" data-slot="1"><span>＋</span>사진·영상 넣기</button>
           <div class="mini-tools">
-            <button class="mini-btn stk" data-act="replace" data-slot="1" title="교체">🔄</button>
-            <button class="mini-btn stk" data-act="remove" data-slot="1" title="삭제">🗑️</button>
+            <button class="mini-btn stk" data-act="replace" data-slot="1" title="교체">⟳</button>
+            <button class="mini-btn stk" data-act="remove" data-slot="1" title="삭제">✕</button>
           </div>
         </div>
       </div>
@@ -209,7 +222,7 @@ header{display:flex;align-items:center;justify-content:space-between;padding:6px
   <p class="hint">한 손가락으로 위치 이동 · 두 손가락으로 확대/회전<br>사진을 두 번 톡 치면 원래 크기로 돌아가요</p>
 
   <div id="videoPanel">
-    <h3>🎬 영상 설정</h3>
+    <h3>영상 설정</h3>
     <div id="trimRows"></div>
     <div class="dur-row">
       <span class="d-label">전체 길이</span>
@@ -219,21 +232,21 @@ header{display:flex;align-items:center;justify-content:space-between;padding:6px
       <button class="dur-chip" data-dur="15">15초</button>
       <button class="dur-chip" data-dur="30">30초</button>
     </div>
-    <p class="mute-note">💡 영상은 무음 MP4로 저장돼요. 인스타에 올릴 때 음악을 입혀주세요.</p>
+    <p class="mute-note">영상은 무음 MP4로 저장돼요. 인스타에 올릴 때 음악을 입혀주세요.</p>
   </div>
 </div>
 
 <div class="dock">
-  <button class="dock-btn stk" id="btnStickers"><span class="ico">🌈</span>스티커</button>
-  <button class="dock-btn stk" id="btnNukki"><span class="ico">✂️</span>누끼 스티커</button>
-  <button class="dock-btn stk primary" id="btnSave"><span class="ico">💾</span>저장</button>
+  <button class="dock-btn stk" id="btnStickers"><span class="ico">◆</span>스티커</button>
+  <button class="dock-btn stk" id="btnNukki"><span class="ico">✂</span>누끼 스티커</button>
+  <button class="dock-btn stk primary" id="btnSave"><span class="ico">↓</span>저장</button>
 </div>
 
 <!-- 스티커 서랍 -->
 <div class="sheet-dim" id="sheetDim"></div>
 <div class="sheet" id="sheet">
   <div class="sheet-grip"></div>
-  <div class="sheet-head"><h3>스티커 고르기</h3><button class="stk" style="padding:7px 13px;font-size:13px;font-weight:700" id="sheetClose">닫기</button></div>
+  <div class="sheet-head"><h3>스티커 고르기</h3><button class="stk" style="padding:7px 13px;font-size:11px;font-weight:600;letter-spacing:.05em" id="sheetClose">닫기</button></div>
   <div class="sheet-tabs">
     <button class="sheet-tab on" data-tab="packs">기본 스티커</button>
     <button class="sheet-tab" data-tab="mine">내 스티커</button>
@@ -242,12 +255,12 @@ header{display:flex;align-items:center;justify-content:space-between;padding:6px
     <div id="tabPacks"></div>
     <div id="tabMine" style="display:none">
       <div class="my-actions">
-        <button class="stk nukki-cta" id="btnNukki2">✂️ 사진으로 스티커 만들기</button>
+        <button class="stk nukki-cta" id="btnNukki2">사진으로 스티커 만들기</button>
         <button class="stk" id="btnBackup">백업 저장</button>
         <button class="stk" id="btnRestore">백업 불러오기</button>
       </div>
       <div class="stk-grid" id="mineGrid"></div>
-      <p class="empty-note" id="mineEmpty">아직 내 스티커가 없어요.<br>사진을 올리면 배경을 자동으로 지워 스티커로 만들어드려요! ✂️<br><span style="font-size:11.5px">내 스티커는 이 기기·이 브라우저에만 저장돼요.<br>폰을 바꾸기 전엔 <b>백업 저장</b>을 눌러 파일로 보관하세요.</span></p>
+      <p class="empty-note" id="mineEmpty">아직 내 스티커가 없어요.<br>사진을 올리면 배경을 자동으로 지워 스티커로 만들어드려요.<br><span style="font-size:11px">내 스티커는 이 기기·이 브라우저에만 저장돼요.<br>폰을 바꾸기 전엔 <b>백업 저장</b>을 눌러 파일로 보관하세요.</span></p>
     </div>
   </div>
 </div>
@@ -268,10 +281,10 @@ header{display:flex;align-items:center;justify-content:space-between;padding:6px
     <h3>어떻게 저장할까요?</h3>
     <p id="saveDesc">완성본을 파일로 다운로드해요.<br>어디에도 업로드되지 않아요.</p>
     <div class="big-btns">
-      <button class="big-btn pink stk" id="btnSaveImg" style="border-radius:14px">🖼️ 이미지로 저장 (PNG)</button>
-      <button class="big-btn stk" id="btnSaveVid" style="border-radius:14px">🎬 영상으로 저장 (MP4)</button>
+      <button class="big-btn pink stk" id="btnSaveImg">이미지로 저장 · PNG</button>
+      <button class="big-btn stk" id="btnSaveVid">영상으로 저장 · MP4</button>
     </div>
-    <p style="font-size:11.5px;margin-top:10px;color:rgba(61,47,66,.45)" id="vidUnsupport"></p>
+    <p style="font-size:11px;margin-top:10px;color:var(--ink-35)" id="vidUnsupport"></p>
     <button class="sub-btn" id="saveClose">닫기</button>
   </div>
 </div>
@@ -279,10 +292,10 @@ header{display:flex;align-items:center;justify-content:space-between;padding:6px
 <!-- 결과 모달 -->
 <div class="modal-dim" id="resultDim">
   <div class="modal">
-    <h3 id="resultTitle">완성! 🎉</h3>
+    <h3 id="resultTitle">완성했어요</h3>
     <div id="resultMediaWrap"></div>
     <div class="big-btns">
-      <button class="big-btn pink stk" id="btnDownload" style="border-radius:14px">📥 다운로드</button>
+      <button class="big-btn pink stk" id="btnDownload">다운로드</button>
     </div>
     <div class="save-tip" id="resultTip"></div>
     <button class="sub-btn" id="resultClose">닫기</button>
@@ -384,14 +397,14 @@ async function setSlotMedia(i,file){
   if (file.type.startsWith('video')){
     const v=document.createElement('video');
     v.muted=true; v.playsInline=true; v.setAttribute('playsinline',''); v.preload='auto'; v.src=url;
-    await new Promise((res,rej)=>{ v.onloadedmetadata=res; v.onerror=()=>rej(new Error('load')); }).catch(()=>toast('영상을 불러오지 못했어요 😢'));
-    if (!v.videoWidth){ toast('이 영상 형식은 지원되지 않아요 😢'); return; }
+    await new Promise((res,rej)=>{ v.onloadedmetadata=res; v.onerror=()=>rej(new Error('load')); }).catch(()=>toast('영상을 불러오지 못했어요'));
+    if (!v.videoWidth){ toast('이 영상 형식은 지원되지 않아요'); return; }
     s.type='video'; s.el=v; s.w=v.videoWidth; s.h=v.videoHeight;
     s.trimStart=0; s.trimEnd=v.duration||0; s.mode='loop';
     try{ await v.play(); }catch(e){}
   } else {
     const img=new Image(); img.src=url;
-    try{ await img.decode(); }catch(e){ toast('사진을 불러오지 못했어요 😢'); return; }
+    try{ await img.decode(); }catch(e){ toast('사진을 불러오지 못했어요'); return; }
     s.type='image'; s.el=img; s.w=img.naturalWidth; s.h=img.naturalHeight;
   }
   document.getElementById('half'+i).classList.add('filled');
@@ -659,12 +672,12 @@ async function addStickerFromSrc(src){
   const img=new Image();
   img.crossOrigin='anonymous'; img.src=src;
   try{ await img.decode(); addSticker(img, src); }
-  catch(e){ toast('스티커를 불러오지 못했어요 😢'); }
+  catch(e){ toast('스티커를 불러오지 못했어요'); }
 }
 async function addStickerFromBlob(blob){
   const url=URL.createObjectURL(blob);
   const img=new Image(); img.src=url;
-  try{ await img.decode(); addSticker(img,url); }catch(e){ toast('스티커를 불러오지 못했어요 😢'); }
+  try{ await img.decode(); addSticker(img,url); }catch(e){ toast('스티커를 불러오지 못했어요'); }
 }
 
 /* 기본팩 로드 */
@@ -747,8 +760,8 @@ $('#btnBackup').onclick=async()=>{
     const b64=await new Promise(r=>{ const fr=new FileReader(); fr.onload=()=>r(fr.result); fr.readAsDataURL(it.blob); });
     out.push(b64);
   }
-  downloadBlob(new Blob([JSON.stringify({app:'banbandeco',stickers:out})],{type:'application/json'}),'반반데코-스티커백업.json');
-  toast('백업 파일을 저장했어요 📦');
+  downloadBlob(new Blob([JSON.stringify({app:'twocut',stickers:out})],{type:'application/json'}),'투컷-스티커백업.json');
+  toast('백업 파일을 저장했어요');
 };
 $('#btnRestore').onclick=()=>{ $('#fileRestore').value=''; $('#fileRestore').click(); };
 $('#fileRestore').onchange=async()=>{
@@ -760,8 +773,8 @@ $('#fileRestore').onchange=async()=>{
       const blob=await (await fetch(b64)).blob();
       await idbAdd(blob); n++;
     }
-    renderMine(); toast(`스티커 ${n}개를 불러왔어요 🎉`);
-  }catch(e){ toast('백업 파일을 읽지 못했어요 😢'); }
+    renderMine(); toast(`스티커 ${n}개를 불러왔어요`);
+  }catch(e){ toast('백업 파일을 읽지 못했어요'); }
 };
 
 /* ═══════════════ 누끼 (배경 제거) ═══════════════ */
@@ -770,7 +783,7 @@ $('#btnNukki').onclick=()=>{ fileNukki.value=''; fileNukki.click(); };
 $('#btnNukki2').onclick=()=>{ closeSheet(); fileNukki.value=''; fileNukki.click(); };
 fileNukki.onchange=async()=>{
   const f=fileNukki.files[0]; if(!f) return;
-  showProgress('✂️ 배경을 지우는 중…','폰 안에서만 처리돼요. 사진은 어디에도 전송되지 않아요.\n처음 한 번은 AI 모델(약 40MB)을 내려받아 오래 걸릴 수 있어요.');
+  showProgress('배경을 지우는 중…','폰 안에서만 처리돼요. 사진은 어디에도 전송되지 않아요.\n처음 한 번은 AI 모델(약 40MB)을 내려받아 오래 걸릴 수 있어요.');
   setProg(5,'준비 중…');
   try{
     const mod=await import('https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.8/+esm');
@@ -786,10 +799,10 @@ fileNukki.onchange=async()=>{
     await addStickerFromBlob(blob);
     renderMine();
     hideProgress();
-    toast('내 스티커함에 저장됐어요 ✂️✨');
+    toast('내 스티커함에 저장됐어요');
   }catch(e){
     hideProgress();
-    toast('배경 제거에 실패했어요. 네트워크를 확인해주세요 😢',3000);
+    toast('배경 제거에 실패했어요. 네트워크를 확인해주세요',3000);
   }
 };
 
@@ -822,7 +835,7 @@ function updateVideoPanel(){
     const row=document.createElement('div'); row.className='trim-row';
     row.innerHTML=`
       <div class="trim-head">
-        <span class="t-label">${i===0?'⬆️ 위 칸':'⬇️ 아래 칸'} 영상</span>
+        <span class="t-label">${i===0?'위 칸':'아래 칸'} 영상</span>
         <span class="t-time"></span>
       </div>
       <div class="trim-track">
@@ -831,8 +844,8 @@ function updateVideoPanel(){
         <div class="trim-handle" data-h="e"></div>
       </div>
       <div class="trim-opts">
-        <button class="opt-chip ${s.mode==='loop'?'on':''}" data-m="loop">🔁 반복 재생</button>
-        <button class="opt-chip ${s.mode==='freeze'?'on':''}" data-m="freeze">⏸️ 마지막 장면 정지</button>
+        <button class="opt-chip ${s.mode==='loop'?'on':''}" data-m="loop">반복 재생</button>
+        <button class="opt-chip ${s.mode==='freeze'?'on':''}" data-m="freeze">마지막 장면 정지</button>
       </div>`;
     rows.appendChild(row);
     bindTrim(row,s);
@@ -889,7 +902,7 @@ function exportDuration(){
 
 /* ═══════════════ 저장 ═══════════════ */
 $('#btnSave').onclick=()=>{
-  if (!state.slots.some(s=>s.el) && !state.stickers.length){ toast('먼저 사진이나 영상을 넣어주세요 🙂'); return; }
+  if (!state.slots.some(s=>s.el) && !state.stickers.length){ toast('먼저 사진이나 영상을 넣어주세요'); return; }
   const vBtn=$('#btnSaveVid'), note=$('#vidUnsupport');
   if (!hasVideo()){ vBtn.disabled=true; note.textContent='영상을 넣으면 MP4 저장이 열려요.'; }
   else if (!hasWebCodecs){ vBtn.disabled=true; note.textContent='이 브라우저는 MP4 저장을 지원하지 않아요. 아이폰은 iOS 16.4 이상, 안드로이드는 크롬 최신 버전이 필요해요.'; }
@@ -907,12 +920,12 @@ function showResult(blob,name,kind){
     const im=document.createElement('img'); im.className='result-media'; im.src=resultUrl; wrap.appendChild(im);
     $('#resultTip').innerHTML = isInApp
       ? '앱 안 브라우저에선 다운로드가 막힐 수 있어요.<br><b>이미지를 길게 눌러</b> 사진에 저장하거나, 외부 브라우저에서 열어주세요.'
-      : '📱 폰: 다운로드 후 <b>파일 앱</b>에서 사진으로 저장하거나, 위 이미지를 <b>길게 눌러</b> 저장하세요.';
+      : ' 폰: 다운로드 후 <b>파일 앱</b>에서 사진으로 저장하거나, 위 이미지를 <b>길게 눌러</b> 저장하세요.';
   } else {
     const v=document.createElement('video'); v.className='result-media'; v.src=resultUrl; v.controls=true; v.playsInline=true; v.muted=true; wrap.appendChild(v);
     $('#resultTip').innerHTML = isInApp
       ? '앱 안 브라우저에선 저장이 막힐 수 있어요. <b>외부 브라우저(사파리/크롬)</b>에서 다시 만들어주세요.'
-      : '📥 다운로드하면 <b>파일 앱(폰) / 다운로드 폴더(PC)</b>에 MP4로 저장돼요. 인스타 업로드 시 음악을 입혀주세요 🎵';
+      : '다운로드하면 <b>파일 앱(폰) / 다운로드 폴더(PC)</b>에 MP4로 저장돼요. 인스타 업로드 시 음악을 입혀주세요.';
   }
   $('#resultDim').classList.add('on');
 }
@@ -930,8 +943,8 @@ $('#btnSaveImg').onclick=()=>{
   render(ec.getContext('2d'),{export:true});
   state.sel=prevSel;
   ec.toBlob(blob=>{
-    if(!blob){ toast('이미지 생성에 실패했어요 😢'); return; }
-    showResult(blob,'banban-deco.png','image');
+    if(!blob){ toast('이미지 생성에 실패했어요'); return; }
+    showResult(blob,'twocut.png','image');
   },'image/png');
 };
 
@@ -940,7 +953,7 @@ $('#btnSaveVid').onclick=async()=>{
   $('#saveDim').classList.remove('on');
   state.exporting=true;
   const dur=exportDuration(), fps=30, frames=Math.max(1,Math.round(dur*fps));
-  showProgress('🎬 MP4 만드는 중…',`${fmt(dur)}초 영상을 굽고 있어요. 화면을 끄지 말고 잠시만 기다려주세요.`);
+  showProgress('MP4 만드는 중…',`${fmt(dur)}초 영상을 굽고 있어요. 화면을 끄지 말고 잠시만 기다려주세요.`);
   const vids=state.slots.filter(s=>s.type==='video');
   vids.forEach(s=>s.el.pause());
   try{
@@ -991,11 +1004,11 @@ $('#btnSaveVid').onclick=async()=>{
     state.sel=prevSel;
     const blob=new Blob([muxer.target.buffer],{type:'video/mp4'});
     hideProgress();
-    showResult(blob,'banban-deco.mp4','video');
+    showResult(blob,'twocut.mp4','video');
   }catch(e){
     console.error(e);
     hideProgress();
-    toast('MP4 저장에 실패했어요. 브라우저를 업데이트하거나 크롬에서 시도해주세요 😢',3500);
+    toast('MP4 저장에 실패했어요. 브라우저를 업데이트하거나 크롬에서 시도해주세요',3500);
   }finally{
     state.exporting=false;
     vids.forEach(s=>{ s.el.currentTime=s.trimStart; s.el.play().catch(()=>{}); });
