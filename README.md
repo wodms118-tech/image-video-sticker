@@ -1,11 +1,11 @@
-# 반반데코 🎀
+# 투컷
 
 사진·영상을 위아래 반반 넣고 스티커로 꾸며서 PNG/MP4로 저장하는 무료 웹앱.
 서버 없음 · 업로드 없음 · 전부 사용자 폰 안에서 처리됨.
 
 ## 배포 방법 (GitHub Pages — 영어동화책 앱과 동일)
 
-1. GitHub에서 새 저장소 생성 (예: `banban-deco`, Public)
+1. GitHub에서 새 저장소 생성 (예: `twocut`, Public)
 2. 이 폴더의 파일 전부 업로드 — **폴더 구조 그대로!**
    ```
    index.html
@@ -14,7 +14,7 @@
    stickers/basic/*.png
    ```
 3. 저장소 Settings → Pages → Branch: `main`, 폴더: `/ (root)` → Save
-4. 1~2분 뒤 `https://아이디.github.io/banban-deco/` 접속 완료
+4. 1~2분 뒤 `https://아이디.github.io/twocut/` 접속 완료
 
 ## 스티커팩 추가하는 법 (마케팅 무기 💪)
 
