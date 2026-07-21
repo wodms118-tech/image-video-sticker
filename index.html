@@ -911,27 +911,34 @@ $('#btnSave').onclick=()=>{
 };
 $('#saveClose').onclick=()=>$('#saveDim').classList.remove('on');
 
-let resultUrl=null, resultName='';
+let resultUrl=null, resultName='', resultBlob=null;
 function showResult(blob,name,kind){
   if (resultUrl) URL.revokeObjectURL(resultUrl);
-  resultUrl=URL.createObjectURL(blob); resultName=name;
+  resultUrl=URL.createObjectURL(blob); resultName=name; resultBlob=blob;
   const wrap=$('#resultMediaWrap'); wrap.innerHTML='';
   if (kind==='image'){
     const im=document.createElement('img'); im.className='result-media'; im.src=resultUrl; wrap.appendChild(im);
     $('#resultTip').innerHTML = isInApp
       ? '앱 안 브라우저에선 다운로드가 막힐 수 있어요.<br><b>이미지를 길게 눌러</b> 사진에 저장하거나, 외부 브라우저에서 열어주세요.'
-      : ' 폰: 다운로드 후 <b>파일 앱</b>에서 사진으로 저장하거나, 위 이미지를 <b>길게 눌러</b> 저장하세요.';
+      : '폰: <b>다운로드</b>를 누르면 공유 창이 떠요 → <b>이미지 저장</b>을 선택하세요. 위 이미지를 길게 눌러 저장해도 돼요.';
   } else {
     const v=document.createElement('video'); v.className='result-media'; v.src=resultUrl; v.controls=true; v.playsInline=true; v.muted=true; wrap.appendChild(v);
     $('#resultTip').innerHTML = isInApp
       ? '앱 안 브라우저에선 저장이 막힐 수 있어요. <b>외부 브라우저(사파리/크롬)</b>에서 다시 만들어주세요.'
-      : '다운로드하면 <b>파일 앱(폰) / 다운로드 폴더(PC)</b>에 MP4로 저장돼요. 인스타 업로드 시 음악을 입혀주세요.';
+      : '폰: <b>다운로드</b>를 누르면 공유 창이 떠요 → <b>비디오 저장</b>을 선택하세요. PC는 다운로드 폴더에 저장돼요. 인스타 업로드 시 음악을 입혀주세요.';
   }
   $('#resultDim').classList.add('on');
 }
-$('#btnDownload').onclick=async()=>{
-  const blob=await (await fetch(resultUrl)).blob();
-  downloadBlob(blob,resultName);
+$('#btnDownload').onclick=()=>{
+  if (!resultBlob) return;
+  const file=new File([resultBlob],resultName,{type:resultBlob.type||(resultName.endsWith('.mp4')?'video/mp4':'image/png')});
+  if (navigator.canShare && navigator.canShare({files:[file]})){
+    navigator.share({files:[file]}).catch(err=>{
+      if (err && err.name!=='AbortError') downloadBlob(resultBlob,resultName);
+    });
+  } else {
+    downloadBlob(resultBlob,resultName);
+  }
 };
 $('#resultClose').onclick=()=>$('#resultDim').classList.remove('on');
 
