@@ -911,16 +911,16 @@ $('#btnSave').onclick=()=>{
 };
 $('#saveClose').onclick=()=>$('#saveDim').classList.remove('on');
 
-let resultUrl=null, resultName='', resultBlob=null;
+let resultUrl=null, resultName='', resultBlob=null, resultKind='image';
 function showResult(blob,name,kind){
   if (resultUrl) URL.revokeObjectURL(resultUrl);
-  resultUrl=URL.createObjectURL(blob); resultName=name; resultBlob=blob;
+  resultUrl=URL.createObjectURL(blob); resultName=name; resultBlob=blob; resultKind=kind;
   const wrap=$('#resultMediaWrap'); wrap.innerHTML='';
   if (kind==='image'){
     const im=document.createElement('img'); im.className='result-media'; im.src=resultUrl; wrap.appendChild(im);
     $('#resultTip').innerHTML = isInApp
       ? '앱 안 브라우저에선 다운로드가 막힐 수 있어요.<br><b>이미지를 길게 눌러</b> 사진에 저장하거나, 외부 브라우저에서 열어주세요.'
-      : '폰: <b>다운로드</b>를 누르면 공유 창이 떠요 → <b>이미지 저장</b>을 선택하세요. 위 이미지를 길게 눌러 저장해도 돼요.';
+      : '폰: <b>다운로드</b>를 누르면 이미지가 새 화면에 크게 열려요. 그 화면을 <b>길게 눌러 "사진에 추가"</b>를 누르면 저장돼요.';
   } else {
     const v=document.createElement('video'); v.className='result-media'; v.src=resultUrl; v.controls=true; v.playsInline=true; v.muted=true; wrap.appendChild(v);
     $('#resultTip').innerHTML = isInApp
@@ -931,7 +931,15 @@ function showResult(blob,name,kind){
 }
 $('#btnDownload').onclick=()=>{
   if (!resultBlob) return;
-  const file=new File([resultBlob],resultName,{type:resultBlob.type||(resultName.endsWith('.mp4')?'video/mp4':'image/png')});
+  if (resultKind==='image'){
+    // iOS Safari에서 이미지 공유시트는 기종별로 들쭉날쭉해서, 새 탭으로 크게 열어
+    // "길게 눌러 저장"이 되게 하는 방식이 가장 확실하게 동작함.
+    const w=window.open(resultUrl,'_blank');
+    if (!w) downloadBlob(resultBlob,resultName); // 팝업 차단 시 대체
+    return;
+  }
+  // 영상은 iOS에서 공유시트(Web Share)가 갤러리 저장으로 가장 안정적으로 이어짐
+  const file=new File([resultBlob],resultName,{type:'video/mp4'});
   if (navigator.canShare && navigator.canShare({files:[file]})){
     navigator.share({files:[file]}).catch(err=>{
       if (err && err.name!=='AbortError') downloadBlob(resultBlob,resultName);
